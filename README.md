@@ -17,15 +17,6 @@ The `GrowImageCircle` component creates a dynamic animation sequence that includ
 npm install gsap @gsap/react
 ```
 
-### Next.js Configuration
-Add the following to your `next.config.js`:
-```javascript
-const nextConfig = {
-  transpilePackages: ['gsap']
-}
-
-module.exports = nextConfig
-```
 
 ## Component Structure
 
@@ -146,14 +137,10 @@ scrollTrigger: {
 
 ## Best Practices
 
-1. **Cleanup**
-   ```typescript
-   useEffect(() => {
-     return () => {
-       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-     };
-   }, []);
-   ```
+1. **Automatic Cleanup**
+   - `useGSAP` automatically handles cleanup of GSAP animations and ScrollTrigger instances
+   - No manual cleanup code is required for basic usage
+   - The hook ensures proper disposal of animations when the component unmounts
 
 2. **Null Checks**
    ```typescript
@@ -162,8 +149,8 @@ scrollTrigger: {
 
 3. **Performance**
    - Use `transform` properties for animations
-   - Implement proper cleanup
    - Ensure smooth scroll behavior
+   - Keep animations optimized for performance
 
 ## Common Issues and Solutions
 
